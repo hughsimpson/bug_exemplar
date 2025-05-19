@@ -163,16 +163,16 @@ def mungeTapirOutput2(x: Seq[File]): Seq[File] = {
               )
               .replace(
                 "make(com.github.plokhotnyuk.jsoniter_scala.macros.CodecMakerConfig.openapEnumConf)",
-                "makeOpenapiEnumLike"
+                "makeOpenapiLikeWithoutDiscriminator"
               ).replace(
                 "make(com.github.plokhotnyuk.jsoniter_scala.macros.CodecMakerConfig.openapiConf.withDiscriminatorFieldName(scala.None).withDiscriminatorFieldName(scala.None))",
-                "makeOpenapiEnumLike"
+                "makeOpenapiLikeWithoutDiscriminator"
               ).replaceAll(
                 """make\(com\.github\.plokhotnyuk\.jsoniter_scala\.macros\.CodecMakerConfig\.openapiConf\.withRequireDiscriminatorFirst\(false\)\.withDiscriminatorFieldName\(Some\(\"(\w+)\"\)\)\.withAdtLeafClassNameMapper\(x => com\.github\.plokhotnyuk\.jsoniter_scala\.macros\.JsonCodecMaker\.simpleClassName\(x\) match \{""",
-                """makeOpenapiADTLike("$1", {"""
+                """makeOpenapiLike("$1", {"""
               ).replaceAll(
                 """make\(com\.github\.plokhotnyuk\.jsoniter_scala\.macros\.CodecMakerConfig\.openapiConf\.withRequireDiscriminatorFirst\(false\)\.withDiscriminatorFieldName\(Some\(\"(\w+)\"\)\)\)""",
-                """makeOpenapiADTLikeDefaultMapping("$1")"""
+                """makeOpenapiLike("$1")"""
               )
               .replaceAll("(^\\s+case[^\n]+)\\}\\)\\)", "$1})")
 //              .replace("implicit lazy val", "implicit def")
