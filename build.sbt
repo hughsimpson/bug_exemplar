@@ -1,7 +1,7 @@
 import java.io.{File, PrintWriter}
 import scala.io.Source
 
-val jsoniterScalaVersion = "2.35.6"
+val jsoniterScalaVersion = "2.36.0"
 val tapirVersion = "1.11.28"
 
 val deps = Seq(
